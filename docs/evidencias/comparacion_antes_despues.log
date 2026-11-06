@@ -1,0 +1,23 @@
+$ python tests/comparar_versiones.py ../inicial .
+
+=== ANTES (estado-inicial)
+1. Crear solicitud valida          HTTP 200  {'mensaje': 'Solicitud creada exitosamente', 'solicitud': {'id': 1,...
+2. Listar solicitudes              HTTP 200  lista de 1 solicitud(es)
+3. Cambiar estado a EN_PROCESO     HTTP 200  {'mensaje': 'Estado actualizado', 'solicitud': {'id': 1, 'titulo': ...
+4. Asignar responsable             HTTP 200  {'mensaje': 'Responsable asignado', 'solicitud': {'id': 1, 'titulo'...
+5. Titulo de 2 caracteres          HTTP 200  {'error': 'El título es muy corto'}
+6. Prioridad inexistente           HTTP 200  {'error': 'Prioridad inválida'}
+7. Estado inexistente              HTTP 200  {'error': 'Estado no permitido'}
+8. Solicitud inexistente (id 99)   HTTP 200  {'error': 'Solicitud no encontrada'}
+9. Responsable de 2 caracteres     HTTP 200  {'error': 'Nombre de responsable muy corto'}
+
+=== DESPUES (refactorizado)
+1. Crear solicitud valida          HTTP 201  {'id': 1, 'titulo': 'Pedido de equivalencia', 'descripcion': 'Equiv...
+2. Listar solicitudes              HTTP 200  lista de 1 solicitud(es)
+3. Cambiar estado a EN_PROCESO     HTTP 200  {'id': 1, 'titulo': 'Pedido de equivalencia', 'descripcion': 'Equiv...
+4. Asignar responsable             HTTP 200  {'id': 1, 'titulo': 'Pedido de equivalencia', 'descripcion': 'Equiv...
+5. Titulo de 2 caracteres          HTTP 422  detalle de validacion de FastAPI
+6. Prioridad inexistente           HTTP 422  detalle de validacion de FastAPI
+7. Estado inexistente              HTTP 422  detalle de validacion de FastAPI
+8. Solicitud inexistente (id 99)   HTTP 404  {'detail': 'Solicitud no encontrada'}
+9. Responsable de 2 caracteres     HTTP 400  {'detail': 'Nombre de responsable muy corto'}
