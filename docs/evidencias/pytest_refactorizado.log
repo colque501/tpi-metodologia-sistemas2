@@ -1,0 +1,19 @@
+$ python -m pytest -v
+============================= test session starts =============================
+collecting ... collected 13 items
+
+tests/test_solicitudes.py::test_crear_solicitud_guarda_los_datos_con_estado_pendiente PASSED [  7%]
+tests/test_solicitudes.py::test_los_ids_se_asignan_en_orden PASSED       [ 15%]
+tests/test_solicitudes.py::test_listar_devuelve_todas_las_solicitudes PASSED [ 23%]
+tests/test_solicitudes.py::test_cambiar_estado_actualiza_la_solicitud PASSED [ 30%]
+tests/test_solicitudes.py::test_asignar_responsable_actualiza_la_solicitud PASSED [ 38%]
+tests/test_solicitudes.py::test_crear_responde_201_created PASSED        [ 46%]
+tests/test_solicitudes.py::test_titulo_menor_a_3_caracteres_se_rechaza_con_422[] PASSED [ 53%]
+tests/test_solicitudes.py::test_titulo_menor_a_3_caracteres_se_rechaza_con_422[ab] PASSED [ 61%]
+tests/test_solicitudes.py::test_prioridad_invalida_se_rechaza_con_422 PASSED [ 69%]
+tests/test_solicitudes.py::test_estado_invalido_se_rechaza_con_422 PASSED [ 76%]
+tests/test_solicitudes.py::test_solicitud_inexistente_responde_404[/solicitudes/estado/99-parametros0] PASSED [ 84%]
+tests/test_solicitudes.py::test_solicitud_inexistente_responde_404[/solicitudes/responsable/99-parametros1] PASSED [ 92%]
+tests/test_solicitudes.py::test_responsable_menor_a_3_caracteres_responde_400 PASSED [100%]
+
+============================= 13 passed in 0.21s ==============================
